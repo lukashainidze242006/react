@@ -10,9 +10,10 @@ function Header() {
       <h1>ჩემი React აპლიკაცია</h1>
       <p>ავტორი / {user.role}: <strong>{user.name}</strong></p>
       
-      {/* ნავიგაციის ლინკები */}
       <nav style={{ marginTop: '10px', display: 'flex', gap: '15px' }}>
         <Link to="/">მთავარი</Link>
+        <Link to="/products">პროდუქტები</Link>
+        <Link to="/contact">კონტაქტი</Link>
         <Link to="/about">ჩვენ შესახებ</Link>
       </nav>
     </header>
