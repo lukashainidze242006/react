@@ -1,22 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react';
+import { increment, decrement, reset } from '../redux/counterSlice';
 
 function Counter() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log('Counter კომპონენტი ჩაიტვირთა!');
-  }, []);
-
-  const handleIncrement = () => setCount(count + 1);
-  const handleDecrement = () => setCount(count - 1);
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '15px', margin: '10px 0' }}>
-      <h3>მრიცხველი: {count}</h3>
-      <button onClick={handleIncrement}>გაზრდა (+)</button>
-      <button onClick={handleDecrement} style={{ marginLeft: '10px' }}>
-        შემცირება (-)
-      </button>
+    <div style={{ border: '1px solid #aaa', padding: '15px', marginTop: '10px' }}>
+      <h3>Redux მრიცხველი: {count}</h3>
+      <button onClick={() => dispatch(increment())}>გაზრდა (+)</button>
+      <button onClick={() => dispatch(decrement())} style={{ marginLeft: '10px' }}>შემცირება (-)</button>
+      <button onClick={() => dispatch(reset())} style={{ marginLeft: '10px' }}>განულება</button>
     </div>
   );
 }
